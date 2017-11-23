@@ -93,7 +93,7 @@ void BoardStateProbability::saveWinningMove()
     int x = xy.at(0).toInt();
     int y = xy.at(1).toInt();
 
-    m_stateProb[x].insert(y, 100);
+    m_stateProb[x].insert(y, 100.0);
     bool ok;
     Lookup::saveBoardProb(m_printID, m_stateProb, m_starter, &ok);
     if(!ok)
@@ -106,7 +106,7 @@ void BoardStateProbability::saveWinningSeries()
     int y = xy.at(1).toInt();
 
     if(m_stateProb.at(x).at(y) < 100)
-        m_stateProb[x].insert(y, m_stateProb.at(x).at(y)+((1/availableSpaces)*5));
+        m_stateProb[x].insert(y, m_stateProb.at(x).at(y)+(((double)1/availableSpaces)*5));
     bool ok;
     Lookup::saveBoardProb(m_printID, m_stateProb, m_starter, &ok);
     if(!ok)
@@ -132,10 +132,10 @@ void BoardStateProbability::saveLosingSeries()
 
     if(m_stateProb.at(x).at(y) > 0)
     {
-        if(m_stateProb.at(x).at(y)-((1/availableSpaces)*2) <= 0)
+        if(m_stateProb.at(x).at(y)-(((double)1/availableSpaces)*2) <= 0)
             m_stateProb[x].insert(y, m_stateProb.at(x).at(y)/2);
         else
-            m_stateProb[x].insert(y, m_stateProb.at(x).at(y)-((1/availableSpaces)*2));
+            m_stateProb[x].insert(y, m_stateProb.at(x).at(y)-(((double)1/availableSpaces)*2));
     }
     bool ok;
     Lookup::saveBoardProb(m_printID, m_stateProb, m_starter, &ok);
