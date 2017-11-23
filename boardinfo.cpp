@@ -131,6 +131,24 @@ bool BoardInfo::checkForWinner()
                 if(xCounter.value(y, 0) >= 4)
                     return true;
             }
+
+            if(x-4 >= 0 && y-4 >= 0)
+            {
+                if(boardState.at(x).at(y) == boardState.at(x-1).at(y-1) &&
+                        boardState.at(x).at(y) == boardState.at(x-2).at(y-2) &&
+                        boardState.at(x).at(y) == boardState.at(x-3).at(y-3) &&
+                        boardState.at(x).at(y) == boardState.at(x-4).at(y-4) &&
+                        boardState.at(x).at(y) != 0)
+                        return true;
+            }
+
+            if(x-4 >= 0  && y+5 <= boardState.at(x).length())
+                if(boardState.at(x).at(y) == boardState.at(x-1).at(y+1) &&
+                        boardState.at(x).at(y) == boardState.at(x-2).at(y+2) &&
+                        boardState.at(x).at(y) == boardState.at(x-3).at(y+3) &&
+                        boardState.at(x).at(y) == boardState.at(x-4).at(y+4) &&
+                        boardState.at(x).at(y) != 0)
+                        return true;
         }
     }
     return false;
