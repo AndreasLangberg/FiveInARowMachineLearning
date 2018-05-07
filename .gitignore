@@ -3,3 +3,4 @@ MakeFile*
 /debug*
 /release*
 *.pro.user
+ui_*
