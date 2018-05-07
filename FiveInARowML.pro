@@ -40,3 +40,21 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui
+
+test {
+    message(Test build)
+
+    QT += testlib
+    TARGET = FIAR-test
+    SOURCES -= main.cpp #Remove old main.cpp
+
+    #Add new main.cpp (With different name to remove confusion for the compiler), and the test files themselves.
+    HEADERS  += \
+        test/tst_test.h
+
+    SOURCES += \
+        test/tst_main.cpp \
+        test/tst_test.cpp
+} else {
+    message(Normal build)
+}

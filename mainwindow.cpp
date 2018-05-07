@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 
-#define HUMAN false
+#define HUMAN true
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),

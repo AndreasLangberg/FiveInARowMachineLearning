@@ -8,6 +8,8 @@
 class BoardSquare : public QWidget
 {
     Q_OBJECT
+
+    friend class Test;
 public:
     explicit BoardSquare(int x, int y, QWidget *parent = nullptr);
 
